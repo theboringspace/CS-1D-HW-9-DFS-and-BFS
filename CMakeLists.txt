@@ -6,10 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(test_data
-    src/test_data.cpp
-    src/dfs.cpp
-)
+add_executable(test_data src/test_data.cpp)
 set(TARGETS test_data)
 
 # bfs is only added once src/bfs.cpp exists
