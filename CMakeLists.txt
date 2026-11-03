@@ -7,11 +7,20 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(test_data src/test_data.cpp)
+set(TARGETS test_data)
 
-target_include_directories(test_data PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-if(MSVC)
-    target_compile_options(test_data PRIVATE /W4)
-else()
-    target_compile_options(test_data PRIVATE -Wall -Wextra -Wpedantic)
+# bfs is only added once src/bfs.cpp exists
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/bfs.cpp)
+    add_executable(bfs src/bfs.cpp src/MatrixGraph.cpp)
+    list(APPEND TARGETS bfs)
 endif()
+
+foreach(target IN LISTS TARGETS)
+    target_include_directories(${target} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+    if(MSVC)
+        target_compile_options(${target} PRIVATE /W4)
+    else()
+        target_compile_options(${target} PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+endforeach()
