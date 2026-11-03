@@ -6,7 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(test_data src/test_data.cpp)
+add_executable(test_data
+    src/test_data.cpp
+    src/dfs.cpp
+)
 
 target_include_directories(test_data PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

@@ -5,6 +5,7 @@
 #include <utility>
 
 #include "GraphData.h"
+#include "dfs.h"
 
 int main()
 {
@@ -49,5 +50,8 @@ int main()
 
     std::cout << (ok ? "All checks passed: 23 edges, all 12 cities connected, no duplicates.\n"
                      : "Some checks FAILED.\n");
+
+    int total = dfs(DENVER);
+    std::cout << "Total miles in DFS tree: " << total << '\n';
     return ok ? 0 : 1;
 }
